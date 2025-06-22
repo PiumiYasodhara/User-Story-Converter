@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Story to Test Case Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="overlay">
+    <div class="container">
+        <h1>User Story → Test Case</h1>
+        <form method="post">
+            <label for="user_story">Enter User Story:</label>
+            <textarea id="user_story" name="user_story" placeholder="As a user, I want to log in so that I can access my dashboard">{{ request.form.user_story }}</textarea>
+            <div class="button-group">
+                <button type="submit" class="convert-btn">Convert</button>
+                <button type="button" class="clear-btn" onclick="document.getElementById('user_story').value = '';">Clear</button>
+            </div>
+        </form>
+
+        {% if test_case %}
+            <h2>Generated Test Case</h2>
+            <pre class="output">{{ test_case }}</pre>
+        {% endif %}
+    </div>
+    </div>
+</body>
+</html>
